@@ -8,12 +8,8 @@ export default SingleResponsibilityPrinciple = () => {
   useEffect(() => {
     setLoading(true);
     axios.get("https://api.com/post/123")
-      .then((response) => {
-        setPost(response.data);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+      .then((response) => setPost(response.data))
+      .finally(() => setLoading(false));
   }, []);
 
   if (loading) return <p>Loading...</p>;

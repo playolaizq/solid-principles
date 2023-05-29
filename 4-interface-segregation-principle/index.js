@@ -1,23 +1,24 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const PostTitle = ({ title }) => {
+const PostTitle = ({ post }) => {
   return (
     <h1>
-      {title}
+      {post.title}
     </h1>
   );
 };
 
-const PostDescription = ({ description }) => {
+const PostDescription = ({ post }) => {
   return (
     <p>
-      {description}
+      {post.description}
     </p>
   );
 };
 
-// Instead of sending the entire "post", just send the required data to each component.
+// Besides breaking Single Responsibility Principle,
+// it pass down the entire "post" into each component, but it doesn't need all the data.
 export default InterfaceSegregationPrinciple = () => {
   const [post, setPost] = useState("");
   const [loading, setLoading] = useState(false);
@@ -34,8 +35,8 @@ export default InterfaceSegregationPrinciple = () => {
   return (
     <div>
       <h1>Post:</h1>
-      <PostTitle title={post.title} />
-      <PostDescription description={post.description} />
+      <PostTitle post={post} />
+      <PostDescription post={post} />
     </div>
   );
 };
