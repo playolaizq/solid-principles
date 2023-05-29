@@ -6,18 +6,19 @@ const Button = ({ children, color, size }) => {
   );
 };
 
-const RedButton = ({ size }) => {
+const RedButton = ({ isLarge }) => {
   return (
-    <Button color="red" size={size}>
+    <Button color="red" size={isLarge ? "large" : "small"}>
       I am a Red Button
     </Button>
   )
 };
 
+// Issue: `Button` and `RedButton` are not substitutable due to "isLarge" prop.
 export default LiskovSubstitutionPrinciple = () => {
   return (
     <div>
-      <RedButton size="large" />
+      <RedButton isLarge={true} />
     </div>
   );
 };
