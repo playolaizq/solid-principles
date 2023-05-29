@@ -9,22 +9,22 @@ const fetchPost = (postId) => {
 // Custom hook to encapsulate state and loading management // "./hooks/use-post.js"
 const usePost = () => {
   const [post, setPost] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
+    setIsLoading(true);
     fetchPost("123")
       .then((postData) => setPost(postData))
-      .finally(() => setLoading(false));
+      .finally(() => setIsLoading(false));
   }, []);
 
-  return { post, loading };
+  return { post, isLoading };
 };
 
 export default SingleResponsibilityPrinciple = () => {
-  const { post, loading } = usePost();
+  const { post, isLoading } = usePost();
 
-  if (loading) return <p>Loading...</p>;
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     <div>
